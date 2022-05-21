@@ -1,3 +1,56 @@
 fieldset {
     border: 1px solid #000;
 }
+.idHide{
+    visibility: hidden;
+    position: absolute;
+}
+.btCancel {
+    visibility: hidden;
+    position: absolute;
+}
+.btPay{
+    visibility: hidden;
+    position: absolute;
+} 
+.btDecline{
+    visibility: hidden;
+    position: absolute;
+}
+
+.svg{
+    visibility: hidden;
+    position: absolute;
+}
+
+.cardRight{
+   
+    position:relative;
+    left: 40%;
+    width: 100%;
+    
+    
+}
+.cardLeft{
+    justify-content: flex-start;
+}
+
+@media only screen and (max-width: 750px) {
+    .card{
+       
+        width: 100%;
+        padding: 0px;
+    }
+   
+}
+@media only screen and (min-width: 950px) {
+.card{
+   
+    width: 80%;
+}
+@media only screen and (min-width: 950px) {
+    .card{
+       
+        width: 70%;
+    }
+}}
