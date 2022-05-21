@@ -15,10 +15,22 @@ export class TransactionComponent implements OnInit {
     ) { }
 
   transactions:any=[]
+  t_id:any;
+  
   ngOnInit(): void {
     this.transactions= this.allTransaction.getFlight();
     console.log(this.transactions);
 
+  }
+  public dates = new Set<String>();
+  dateExists(date:any){
+    if(this.dates.has(date)){
+      return true;
+    }
+    else{
+      this.dates.add(date);
+      return false;
+    }
   }
 
 
