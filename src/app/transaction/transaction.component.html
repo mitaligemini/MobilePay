@@ -1,33 +1,88 @@
-<div class="p-2" >
-    <div style="width: 25%; border: 2px solid black;" class="p-2" >
-        <div class="d-flex justify-content-between m-0 " >
-            <span class="my-auto p-1 " style="font-size: 25px; font-weight: 600;   ">&#8377;</span><h1 class=""> 3000</h1>
-            <small class="" style="margin: auto; margin-right: 0; font-weight: 600;"> 
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green" class="bi bi-check-lg"  viewBox="0 0 16 16">
-                    <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-                  </svg>
-                You paid</small>
-        </div>
-        <div class="d-flex justify-content-between" >
-            <div class="" >
-                <small style="font-size: 12px; font-weight: 600;"> Transaction ID </small>
-                <p style="font-size: 11px; font-weight: 600;">5636633333hhhhhhhhghh</p>
-                <button class="rounded px-3" style="margin-right:10px ;">Cancel</button>
-                <button class="rounded px-4" style="margin-right:10px ;">Pay</button>
-                <button class="rounded px-3">Decline</button>
+<div class=" card" style="border: 0; margin-left:auto; margin-right: auto; overflow: hidden;">
+    <div class="m-5" style="border:2px solid; ">
+        <div class="d-flex " style="border-bottom: 2px  solid;  align-items: center;">
+            <div style="padding-right: 10px; padding-left: 15px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                    class="bi bi-arrow-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd"
+                        d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+                </svg>
             </div>
-            <div class="" style="margin:auto ; margin-right:0; margin-top: 10px;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
-                  </svg>
+            <div>
+                <img class="rounded-circle" height="45" width="50"
+                    src="https://secure.gravatar.com/avatar/ab4d91f84b5998b400460d3146e6903b?d=https://www.simtropolis.com/objects/profiles/monthly_2017_08/M.png.6dcdbf70be51483729a8d213acabd5ab.png"
+                    alt="">
             </div>
+            <div style="padding-left: 10px; padding-top: 13px;">
+                <p style="font-size: 1em;font-weight:600; margin: 0px; padding: 0px;"> &nbsp; Mitali Varshney</p>
+                <p class="block" style="font-size: 13px; font-weight:600">+91 63583 73734</p>
+            </div>
+
         </div>
 
-        
 
+        <div class="p-2 pb-4" *ngFor="let trans of transactions" >
+            <div style="border-bottom:3px dotted ; clear:both; margin-bottom: 20px;"  *ngIf="!dateExists(trans.date)">
+                <h1 style="margin-bottom:-14px ; margin-left: 35%; "> <span
+                        style="background-color: white; font-size: 15px;">{{trans.date}} </span></h1>
+            </div>
+            <div [class.cardRight]="trans.type=='You paid' || trans.type=='You requested'">
+
+                <div style="width: 60%;   border: 2px solid black ; clear: both;" class="p-2 ">
+                    <div class="d-sm-flex justify-content-between m-0 ">
+                        <div class="d-flex">
+                            <span class="my-auto p-1 " style="font-size: 25px; font-weight: 600;   ">&#8377;</span>
+                            <h1 class=""> {{trans.amount}}</h1>
+                        </div>
+                        <small class="" style="margin: auto; margin-right: 0; font-weight: 600; font-size: 2.3vh; ">
+                            <svg [class.svg]="trans.type=='Request received' || trans.type=='You requested'"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="green"
+                                class="bi bi-check-lg" viewBox="0 0 16 16">
+                                <path
+                                    d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z" />
+                            </svg>
+                            <svg [class.svg]="trans.type=='You paid' || trans.type=='You received'"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-link" viewBox="0 0 16 16">
+                                <path
+                                    d="M6.354 5.5H4a3 3 0 0 0 0 6h3a3 3 0 0 0 2.83-4H9c-.086 0-.17.01-.25.031A2 2 0 0 1 7 10.5H4a2 2 0 1 1 0-4h1.535c.218-.376.495-.714.82-1z" />
+                                <path
+                                    d="M9 5.5a3 3 0 0 0-2.83 4h1.098A2 2 0 0 1 9 6.5h3a2 2 0 1 1 0 4h-1.535a4.02 4.02 0 0 1-.82 1H12a3 3 0 1 0 0-6H9z" />
+                            </svg>
+                            {{trans.type}}</small>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <div class="">
+                            <small style="font-size: 12px; font-weight: 600;" [class.idHide]="trans.id==null">
+                                Transaction ID </small>
+                            <p style="font-size: 11px; font-weight: 600;">{{trans.id}}</p>
+
+                            <button [class.btCancel]="trans.cancel==false" class="rounded px-3"
+                                style="margin-right:10px ; background-color: white;">Cancel</button>
+                            <button [class.btPay]="trans.pay==false" class="rounded px-4"
+                                style="margin-right:10px ; background-color: white;">Pay</button>
+                            <button [class.btDecline]="trans.decline==false" class="rounded px-3"
+                                style="background-color: white;">Decline</button>
+                        </div>
+                        <div class="" style="margin:auto ; margin-right:0; margin-top: 10px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                                class="bi bi-chevron-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z" />
+                            </svg>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div
+                    style="font-size: 11PX; font-weight: 600; text-align: right; width: 60%; float: left; align-items: flex-end;">
+                    {{trans.date}}, {{trans.time}} {{trans.format}}</div>
+
+            </div>
+
+        </div>
     </div>
-    <div style="font-size: 11PX; text-align:end; width: 25%; font-weight: 600;">19 Nov 2019, 10:35 am</div>
 </div>
-<div style="border-bottom:3px dotted ;">
-<h1 style="margin-bottom:-14px ; margin-left: 45%; "> <span style="background-color: white; font-size: 15px;">19 Nov 2019 </span></h1></div>
-<div></div>
