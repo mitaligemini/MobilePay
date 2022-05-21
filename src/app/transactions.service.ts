@@ -63,6 +63,17 @@ export class TransactionsService {
         decline:true,
         cancel:false,
       },
+      {
+        type: 'You paid',
+        amount: 3000,
+        id:'A1344242445252',
+        date: '16 Nov 2020',
+        time:'10:24',
+        format:'PM',
+        pay:false,
+        decline:false,
+        cancel:false,
+      },
     
     ]}
 }
