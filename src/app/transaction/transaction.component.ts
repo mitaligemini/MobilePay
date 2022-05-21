@@ -17,9 +17,30 @@ export class TransactionComponent implements OnInit {
   transactions:any=[]
   t_id:any;
   
+  
+  
+  
+  
   ngOnInit(): void {
     this.transactions= this.allTransaction.getFlight();
     console.log(this.transactions);
+    // this.transactions.sort((a:any,b:any)=>{
+    //   var dateA = new Date(a.date).getTime();
+    //   var dateB = new Date(b.date).getTime();
+    //   return dateA > dateB ? 1 : -1; 
+    // });
+    this.transactions.sort((a:any, b:any) => {
+      const dt1 = Date.parse(`${a.date} ${a.time}`)
+      const dt2 = Date.parse(`${b.date} ${b.time}`)
+    
+      return dt1 - dt2
+    
+    })
+   
+
+    
+    
+    console.log(this.transactions)
 
   }
   public dates = new Set<String>();
